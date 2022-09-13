@@ -410,14 +410,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    478
+                    900
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -512,11 +512,80 @@
 <li>每个属性（列）都有类型</li>
 </ul>
 <h4 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h4><ul>
-<li>schema（模式） 描述数据库中的关系</li>
-<li>instance（实例） 给定时间点的实际内容</li>
+<li>schema（模式，属性集） 描述数据库中的关系，不经常变化</li>
+<li>instance（实例） 给定时间点的实际内容，随时间变化</li>
 <li>NULL 未知或未定义</li>
 <li>key（键） 所有元组拥有唯一取值的属性的或独一五二的属性的集合</li>
 </ul>
+<h4 id="创建和使用关系数据库"><a href="#创建和使用关系数据库" class="headerlink" title="创建和使用关系数据库"></a>创建和使用关系数据库</h4><ul>
+<li>使用 DDL 设计模式（schema）</li>
+<li>使用 ETL 工具对数据操作<ul>
+<li>提取</li>
+<li>变换</li>
+<li>加载</li>
+</ul>
+</li>
+<li>重复执行查询和修改</li>
+</ul>
+<h4 id="查询的结果"><a href="#查询的结果" class="headerlink" title="查询的结果"></a>查询的结果</h4><p>关系数据库中任何查询的结果是<strong>关系</strong></p>
+<p>解释：</p>
+<ul>
+<li>在上一次的查询结果上可以进行组合查询</li>
+<li>封闭的 （查询的对象是关系，结果也是关系）</li>
+</ul>
+<h4 id="查询语言"><a href="#查询语言" class="headerlink" title="查询语言"></a>查询语言</h4><ul>
+<li>关系代数 （人来查询）</li>
+<li>SQL （机器来查询）</li>
+</ul>
+<p>这两种查询语言在功能上等价</p>
+<hr>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h3><p>最简单的查询：一张表的所有元组</p>
+<p>代数的核心：<strong>表达式</strong></p>
+<p>一个单独的关系是一个表达式，嵌套了关系运算符的表达式仍是表达式</p>
+<p>关系代数表达式有值，最基本的表达式就是关系名</p>
+<h3 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h3><ul>
+<li><p>选择（select）运算符：σ </p>
+<ul>
+<li>σ Cond (Relation) Cond:条件，Relation: 关系</li>
+<li>作用：选择某些行</li>
+</ul>
+</li>
+<li><p>投影（project）运算符： π </p>
+<ul>
+<li> π A1,…,An (Relation) A:列名</li>
+<li>作用：选择某些列，<strong>结果没有重复的行（这里与SQL不同）</strong></li>
+</ul>
+</li>
+<li><p>连结（join）运算符：×</p>
+<ul>
+<li>tableA × tableB</li>
+<li>作用：两个关系的组合 结果的行数等于tableA的行数与tableB的乘积</li>
+</ul>
+</li>
+<li><p>自然连接：⋈</p>
+<ul>
+<li>对具有相同名称的属性取值要相等</li>
+<li>消去重复属性</li>
+</ul>
+</li>
+<li><p>θ 连接：默认的连接</p>
+</li>
+</ul>
+<h3 id="集合运算符"><a href="#集合运算符" class="headerlink" title="集合运算符"></a>集合运算符</h3><ul>
+<li>并集：∪<ul>
+<li>垂直方向上对元组进行组合，使元组个数增加</li>
+</ul>
+</li>
+<li>差集：A - B<ul>
+<li>A 中有但 B 中没有</li>
+</ul>
+</li>
+<li>交集：∩<ul>
+<li>可以由差集构造出来 A ∩ B 等价于 A - ( A - B )</li>
+</ul>
+</li>
+</ul>
+<p>schema(A) = schema(B) 时，A ∩ B 相当于 A ⋈ B</p>
 
                 
             </div>
@@ -925,7 +994,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">8.9k</span>
+                        class="white-color">9.3k</span>
             
             
             
