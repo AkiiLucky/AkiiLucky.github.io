@@ -441,7 +441,7 @@
                 <h1 id="数据库中的事务、索引、以及三大范式"><a href="#数据库中的事务、索引、以及三大范式" class="headerlink" title="数据库中的事务、索引、以及三大范式"></a>数据库中的事务、索引、以及三大范式</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="事务的基本原则-ACID"><a href="#事务的基本原则-ACID" class="headerlink" title="事务的基本原则 ACID"></a>事务的基本原则 ACID</h3><h4 id="原子性-（Atomicity）"><a href="#原子性-（Atomicity）" class="headerlink" title="原子性 （Atomicity）"></a>原子性 （Atomicity）</h4><p>要么都成功，要么都失败</p>
 <h4 id="一致性-（Consistency）"><a href="#一致性-（Consistency）" class="headerlink" title="一致性 （Consistency）"></a>一致性 （Consistency）</h4><p>事务提交后的数据要保持一致</p>
 <h4 id="隔离性-（Isolation）"><a href="#隔离性-（Isolation）" class="headerlink" title="隔离性 （Isolation）"></a>隔离性 （Isolation）</h4><p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
-<h4 id="持久性-（Isolation）"><a href="#持久性-（Isolation）" class="headerlink" title="持久性 （Isolation）"></a>持久性 （Isolation）</h4><p>事务提交后的数据持久化保存在数据库中，提交后不可逆</p>
+<h4 id="持久性-（Durability）"><a href="#持久性-（Durability）" class="headerlink" title="持久性 （Durability）"></a>持久性 （Durability）</h4><p>事务提交后的数据持久化保存在数据库中，提交后不可逆</p>
 <h3 id="隔离所导致的一些问题"><a href="#隔离所导致的一些问题" class="headerlink" title="隔离所导致的一些问题"></a>隔离所导致的一些问题</h3><h4 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h4><p>一个事务读取了另一个事务未提交的数据</p>
 <h4 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h4><p>一个事务读取表中某一行时，多次读取的结果不同</p>
 <h4 id="虚读或幻读"><a href="#虚读或幻读" class="headerlink" title="虚读或幻读"></a>虚读或幻读</h4><p>在一个事务内读取到了另一个事务插入的数据，导致前后数据读取不一致</p>
@@ -924,7 +924,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.7k</span>
+                        class="white-color">13.4k</span>
             
             
             

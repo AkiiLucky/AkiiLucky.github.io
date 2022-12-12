@@ -410,14 +410,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    905
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    14 分
                 </div>
                 
 
@@ -586,7 +586,254 @@
 </li>
 </ul>
 <p>schema(A) = schema(B) 时，A ∩ B 相当于 A ⋈ B</p>
-<h3 id="除法运算符"><a href="#除法运算符" class="headerlink" title="除法运算符"></a>除法运算符</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<hr>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><h3 id="单表设计异常"><a href="#单表设计异常" class="headerlink" title="单表设计异常"></a>单表设计异常</h3><ul>
+<li>数据冗余（Redundancy）：<ul>
+<li>坏处：相同信息被存储多次，不利于修改，造成数据不一致</li>
+<li>好处：提高安全性（备份)，加速查询（缓存）</li>
+</ul>
+</li>
+<li>更新异常</li>
+<li>删除异常</li>
+</ul>
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><h4 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h4><p>原子性：保证每一列不可再分</p>
+<h4 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h4><p>前提：满足第一范式<br>每行都是独一无二的，要有主键<br>每张表只描述一个事情</p>
+<h4 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h4><p>前提：满足第一范式和第二范式<br>要确保表的每一列都与主键直接相关，不能间接相关</p>
+<h4 id="Boyce-Codd范式（BCNF）"><a href="#Boyce-Codd范式（BCNF）" class="headerlink" title="Boyce-Codd范式（BCNF）"></a>Boyce-Codd范式（BCNF）</h4><p>位于第三范式和第四范式之间<br>定义：对R上的任意的函数依赖，如果属性集A都函数地决定B，那么A应该是键<br>用于解决函数依赖造成数据冗余的问题</p>
+<h4 id="第四范式（4NF）"><a href="#第四范式（4NF）" class="headerlink" title="第四范式（4NF）"></a>第四范式（4NF）</h4><p>定义：在关系R上，如果对于每个多值依赖A-&gt;-&gt;B，那么A是键。<br>用于解决多值依赖造成数据冗余问题</p>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>如果A函数地决定B(或B函数地依赖A)，记为A -&gt; B</p>
+<p>如果A函数地决定了所有属性等价于A是一个键</p>
+<p>关系中不能有重复的元组</p>
+<ul>
+<li>分解规则</li>
+<li>组合规则</li>
+</ul>
+<h3 id="属性的闭包（closure）"><a href="#属性的闭包（closure）" class="headerlink" title="属性的闭包（closure）"></a>属性的闭包（closure）</h3><p>属性集A的闭包是所有依赖于A的属性的集合</p>
+<p>如果属性集A的闭包是全部属性组成的集合，那么属性集A是键</p>
+<p>如果属性集A是键，那么A的超集也是键</p>
+<h3 id="无损分解"><a href="#无损分解" class="headerlink" title="无损分解"></a>无损分解</h3><p>如果关系A可以分解成B和C，并且满足</p>
+<ul>
+<li>schema(B)与schema(C)的并集等于schema(A)</li>
+<li>B与C的自然连接是A的超集</li>
+</ul>
+<p>那么该分解为无损分解</p>
+<h3 id="多值依赖"><a href="#多值依赖" class="headerlink" title="多值依赖"></a>多值依赖</h3><p>记为：A-&gt;-&gt;B<br>定义：在关系R上，如果存在属性A相等的两个元组t,u，那么必然存在另一个元组v在属性B上和其中一个元组相等但在rest上不等。</p>
+<ul>
+<li>A到B是一到多的映射。</li>
+<li>函数依赖都是多值依赖。</li>
+</ul>
+<h3 id="BCNF和4NF的缺点"><a href="#BCNF和4NF的缺点" class="headerlink" title="BCNF和4NF的缺点"></a>BCNF和4NF的缺点</h3><ul>
+<li>造成过度分解</li>
+</ul>
+<h3 id="主属性"><a href="#主属性" class="headerlink" title="主属性"></a>主属性</h3><p>包含在键中的属性就是主属性</p>
+<h3 id="3NF分解"><a href="#3NF分解" class="headerlink" title="3NF分解"></a>3NF分解</h3><p>满足3NF的关系R，对每个平凡函数依赖A-&gt;B，要么A是键要么A是主属性。</p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="实体关系模型"><a href="#实体关系模型" class="headerlink" title="实体关系模型"></a>实体关系模型</h3><ul>
+<li>实体：事物或对象</li>
+<li>实体集：相似的实体组成的集合</li>
+<li>属性：实体集的属性，一般为单一的值，不能为结构体或集合</li>
+<li>关系：指的是多个实体之间的联系，该联系允许拥有隶属于这段联系的独立的属性</li>
+<li>关系集：某个特定关系类型联系的所有实体的集合</li>
+</ul>
+<h3 id="E-R图（entity-relationship-diagram）"><a href="#E-R图（entity-relationship-diagram）" class="headerlink" title="E-R图（entity-relationship diagram）"></a>E-R图（entity-relationship diagram）</h3><ul>
+<li>实体集：矩形</li>
+<li>属性：椭圆</li>
+<li>关系：菱形</li>
+<li>多对多：直线或曲线</li>
+<li>多对一：单向箭头</li>
+<li>一对一：双向箭头</li>
+<li>子类：三角形箭头</li>
+<li>弱实体集：自身没有键要依赖其他强实体集才能有键，用双实线矩形</li>
+<li>多值属性：双实线椭圆</li>
+<li>主键：下滑线</li>
+</ul>
+<h3 id="实体之间的联系"><a href="#实体之间的联系" class="headerlink" title="实体之间的联系"></a>实体之间的联系</h3><ul>
+<li>多对多</li>
+<li>多对一</li>
+<li>一对一</li>
+</ul>
+<h3 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h3><ul>
+<li>尽量少用弱实体集，每个实体集都要有自己的键</li>
+<li>多对一的多的那一方要建模为实体集，如果是一的那一方必须要有除键外的其他属性才能建模为实体集</li>
+<li>如果E-R图中的关系有一些属性，那么要将关系建模为数据库中的一张表</li>
+<li>合并关系，多对一的关系可以合并到多的那一方的表的属性中</li>
+<li>对于弱实体集，可以建立一张包含弱实体集全部主属性的表</li>
+<li>对于子类<ul>
+<li>所有子类都建模一张表</li>
+<li>只建立父类的表，空的子类用nulls</li>
+</ul>
+</li>
+</ul>
+<h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p>存储管理</p>
+<h3 id="文件-file"><a href="#文件-file" class="headerlink" title="文件 file"></a>文件 file</h3><ul>
+<li>文件是pages的集合</li>
+<li>pages是记录的集合</li>
+</ul>
+<h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><ul>
+<li>未排序的堆文件</li>
+<li>分类簇的未排序堆文件</li>
+<li>排序文件</li>
+<li>索引文件：一定是有序的</li>
+</ul>
+<h3 id="页面-page"><a href="#页面-page" class="headerlink" title="页面 page"></a>页面 page</h3><p>record id = (page, location in page) = (page, slotId)</p>
+<h4 id="页面组成"><a href="#页面组成" class="headerlink" title="页面组成"></a>页面组成</h4><ul>
+<li>page header/footer</li>
+<li>record</li>
+</ul>
+<p>槽化页面 slotted page ：现代数据库基本都使用这种</p>
+<h3 id="记录-record"><a href="#记录-record" class="headerlink" title="记录 record"></a>记录 record</h3><ul>
+<li>header</li>
+<li>字段</li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>稠密索引：每个数据都有索引<br>稀疏索引：不是每个数据都有索引</p>
+<h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h4><ul>
+<li>链式哈希（哈希桶）：每个表项链接多个桶，桶里存若干条记录</li>
+<li>开放地址哈希：哈希值相同的记录需要链接起来</li>
+<li>Cuckoo Hash 布谷鸟哈希：使用2个hash函数（对应两个表）来处理碰撞，从而每个key都对应到2个位置</li>
+<li>动态哈希：引入一个仅存储桶指针的目录数组，用翻倍的目录项数来取代翻倍的桶的数目，且每次只分裂有溢出的桶，从而减小翻倍的代价。</li>
+</ul>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><p>B+树的特点：</p>
+<ul>
+<li>动态树索引、平衡树</li>
+<li>高效插入、删除</li>
+<li>d&lt;=m&lt;=2d,d是结点的度，m为阶(order)，m为结点中最大键值个数</li>
+<li>每个内部结点的最大子结点数：扇出系数=2d+1</li>
+<li>数据记录只存放在叶子结点，页面内部的记录要排序，页面之间用指针链接</li>
+</ul>
+<p><img src="database-notes-img/20221115173436.png" alt="Alt text"></p>
+<ul>
+<li>聚簇索引：索引的叶子结点就是数据page<ul>
+<li>要对数据排序，数据是索引的一部分</li>
+<li>一个表只能建立一个 </li>
+</ul>
+</li>
+<li>非聚簇索引：<ul>
+<li>不用按数据排序</li>
+<li>一个表能建立多个 </li>
+</ul>
+</li>
+</ul>
+<h2 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h2><ul>
+<li>并发控制</li>
+</ul>
+<h3 id="事务-transaction"><a href="#事务-transaction" class="headerlink" title="事务 transaction"></a>事务 transaction</h3><p>事务（Transaction）是一种机制、一个操作序列，包含了一组数据库操作命令。事务把所有的命令作为一个整体一起向系统提交或撤销操作请求，即这一组数据库命令要么都执行，要么都不执行，因此事务是一个不可分割的工作逻辑单元。</p>
+<h3 id="事务的基本原则-ACID"><a href="#事务的基本原则-ACID" class="headerlink" title="事务的基本原则 ACID"></a>事务的基本原则 ACID</h3><h4 id="原子性-（Atomicity）"><a href="#原子性-（Atomicity）" class="headerlink" title="原子性 （Atomicity）"></a>原子性 （Atomicity）</h4><p>要么都成功，要么都失败</p>
+<h4 id="一致性-（Consistency）"><a href="#一致性-（Consistency）" class="headerlink" title="一致性 （Consistency）"></a>一致性 （Consistency）</h4><p>事务提交后的数据要保持一致</p>
+<h4 id="隔离性-（Isolation）"><a href="#隔离性-（Isolation）" class="headerlink" title="隔离性 （Isolation）"></a>隔离性 （Isolation）</h4><p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
+<h4 id="持久性-（Durability）"><a href="#持久性-（Durability）" class="headerlink" title="持久性 （Durability）"></a>持久性 （Durability）</h4><p>事务提交后的数据持久化保存在数据库中，提交后不可逆</p>
+<h3 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h3><p>四个级别：</p>
+<ul>
+<li>读未提交：可以脏读，可以不可重复读，可以幻读</li>
+<li>读已提交：不可以脏读，可以不可重复读，可以幻读</li>
+<li>可重复读：不可以脏读，不可以不可重复读，可以幻读</li>
+<li>可串行化：不可以脏读，不可以不可重复读，不可以幻读</li>
+</ul>
+<h4 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h4><p>一个事务读取了另一个事务未提交的数据</p>
+<h4 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h4><p>一个事务内读取到了另一个事务更新的数据，多次读取的结果不同</p>
+<h4 id="虚读或幻读"><a href="#虚读或幻读" class="headerlink" title="虚读或幻读"></a>虚读或幻读</h4><p>在一个事务内读取到了另一个事务插入的数据，导致前后数据读取不一致</p>
+<h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><p>多个事务的读写操作按时间排序的执行序列</p>
+<h4 id="串行调度"><a href="#串行调度" class="headerlink" title="串行调度"></a>串行调度</h4><p>各个事务之间没有任何操作交错执行，事务一个一个执行。</p>
+<h4 id="可串行调度-Serializable"><a href="#可串行调度-Serializable" class="headerlink" title="可串行调度 Serializable"></a>可串行调度 Serializable</h4><p>如果一个调度的结果与某一串行调度执行的结果等价，则称该调度是可串行化调度，否则是不可串调度。</p>
+<h4 id="冲突可串行调度-Conflict-serializable"><a href="#冲突可串行调度-Conflict-serializable" class="headerlink" title="冲突可串行调度 Conflict-serializable"></a>冲突可串行调度 Conflict-serializable</h4><p>冲突(Conﬂicts)操作：</p>
+<ul>
+<li>这两个操作属于不同的事务</li>
+<li>这两个操作涉及相同的对象，且至少一个操作是写</li>
+</ul>
+<p>冲突可串行：</p>
+<ul>
+<li>能够通过交换非冲突操作，将调度改变为可串行的调度</li>
+</ul>
+<p>第1步: 将调度S表示为有向图(precedence graph)</p>
+<ul>
+<li>每个顶点代表S中的一个事务</li>
+<li>T从事务Ti到事务j有一条有向边(arc)，如果Ti的某个操作oi和Tj的某个操作oj冲突，并且oi在S中先于oj</li>
+</ul>
+<p>第2步: S是冲突可串行化调度，当且仅当其优先图没有环(acyclic)</p>
+<ul>
+<li>优先图顶点的任意拓扑序(topologicalorder)表示了一个与S冲突等价的串行调度</li>
+</ul>
+<h4 id="视图可串行化"><a href="#视图可串行化" class="headerlink" title="视图可串行化"></a>视图可串行化</h4><p>两个调度S1和S2视图等价，如果</p>
+<ul>
+<li>如果S1中事务T1读了对象A的初始值，则S2中T1也读了A的初始值</li>
+<li>如果S1中事务T1读了事务T2修改过的A值，则S1中T1也读了T2修改过的A值</li>
+<li>如果S1中事务T1写了A的最终值，则S2中T1也写了A的最终值</li>
+</ul>
+<p>如果一个调度视图等价于某个串行调度，则该调度是视图可串行化调度(view serializable schedule)。</p>
+<h3 id="锁-Lock"><a href="#锁-Lock" class="headerlink" title="锁 Lock"></a>锁 Lock</h3><ul>
+<li>乐观锁：操作数据时不会对操作的数据进行加锁（这使得多个任务可以并行的对数据进行操作），只有到数据提交的时候才通过一种机制来验证数据是否存在冲突(一般实现方式是通过加版本号然后进行版本号的对比方式实现);</li>
+<li>悲观锁：每次请求都会先对数据进行加锁， 然后进行数据操作，最后再解锁</li>
+</ul>
+<h4 id="两段锁-Two-Phase-Locking，简称2PL-协议"><a href="#两段锁-Two-Phase-Locking，简称2PL-协议" class="headerlink" title="两段锁(Two-Phase Locking，简称2PL)协议"></a>两段锁(Two-Phase Locking，简称2PL)协议</h4><p>运用<strong>封锁</strong>方法，避免冲突操作。</p>
+<p>2PL协议规定所有事务必须分两个阶段对数据项加锁和解锁：</p>
+<ul>
+<li>阶段1：<ul>
+<li>在读任何数据之前，都要获得数据的共享锁 S</li>
+<li>在写任何数据之前，都要获得数据的排他锁 X</li>
+</ul>
+</li>
+<li>阶段2：<ul>
+<li>一个事务释放锁之后，就不能再获取新的锁了</li>
+</ul>
+</li>
+</ul>
+<p>并发执行的所有事务均遵守两段锁协议，则对这些事务的任何并发调度策略都是可串行化的。所有遵守两段锁协议的事务，其并发执行的结果一定是正确的。</p>
+<p>但2PL协议不能避免级联撤销问题（一个事务回滚，受它影响的事务也要回滚）。</p>
+<p>严格的2PL协议可以避免级联撤销问题。<br>严格的2PL协议：在释放锁的时候要一起释放所有锁。</p>
+<h4 id="锁的粒度"><a href="#锁的粒度" class="headerlink" title="锁的粒度"></a>锁的粒度</h4><ul>
+<li>Database</li>
+<li>Table</li>
+<li>Page</li>
+<li>Record</li>
+</ul>
+<h4 id="意向锁-Intention-Lock"><a href="#意向锁-Intention-Lock" class="headerlink" title="意向锁 Intention Lock"></a>意向锁 Intention Lock</h4><p>多粒度封锁协议中，避免对子孙结点的检测</p>
+<ul>
+<li>意图共享锁 IS</li>
+<li>意图排他锁 IX</li>
+<li>共享意图排他锁 SIX</li>
+</ul>
+<p>在对资源结点加锁时，必须给该结点的所有祖先结点都加上意图锁。<br>好处：对新的结点加锁时就不需要检测其子孙结点了</p>
+<ul>
+<li>事务在获取行级 S 锁之前，必须获取其对应表的 IS 或 IX 锁</li>
+<li>事务在获取行级 X 锁之前，必须获取其对应表的 IX 锁</li>
+</ul>
+<h3 id="恢复管理"><a href="#恢复管理" class="headerlink" title="恢复管理"></a>恢复管理</h3><p>保证原子性和持久性</p>
+<ul>
+<li>STEAL：未提交事务的数据可以写回磁盘</li>
+<li>NO STEAL：未提交事务的数据不可以写回磁盘</li>
+<li>FORCE：已提交事务的数据立即写回磁盘</li>
+<li>NO FORCE：已提交事务的数据不一定立即写回磁盘（延迟写）</li>
+</ul>
+<p>并发度最高的组合：STEAL + NO FORCE</p>
+<p>保证未提交事务的原子性，已提交事务的持久性</p>
+<p>引入日志</p>
+<h4 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h4><p>存放按时间顺序的记录，保证REDO和UNDO</p>
+<ul>
+<li>Undo一般用于事务的取消与回滚，记录的是数据被修改前的值</li>
+<li>Redo一般用于恢复已确认但未写入数据库的数据，记录的是数据修改后的值</li>
+</ul>
+<p>log record: &lt;XID,pageId,old data,new data&gt;</p>
+<h4 id="写优先日志协议"><a href="#写优先日志协议" class="headerlink" title="写优先日志协议"></a>写优先日志协议</h4><ul>
+<li>在数据页写回数据磁盘之前，必须确保日志写回日志磁盘</li>
+<li>事务提交之前，确保所有操作记录到日志里</li>
+</ul>
+<p>STEAL + NO FORCE + log 可以确保原子性和持久性</p>
+<h4 id="LSN-日志序列号"><a href="#LSN-日志序列号" class="headerlink" title="LSN 日志序列号"></a>LSN 日志序列号</h4><p>pageLSN: 每个page在磁盘里的最后一条日志<br>flushedLSN: 在内存里面，指向日志磁盘的最后一条日志</p>
+<p>保证 pageLSN&lt;=flushedLSN</p>
+<p>日志写回日志磁盘的时候是不能中断的（一直占用CPU）</p>
+<p>Tx Table: 用来记录所有正在进行的Tx信息的table<br>Dirty_Page Table：用来记录脏页的Redo Log的“可能的”开始位置</p>
+<h4 id="检查点-checkpoint"><a href="#检查点-checkpoint" class="headerlink" title="检查点 checkpoint"></a>检查点 checkpoint</h4><p>系统崩溃恢复时，从最后一个checkpoint开始向后搜索日志，来减少日志搜索范围</p>
+<p>checkpointing记录包含事务表和脏页表，可以得到哪些事务已经提交，哪些事务还未提交</p>
+<h2 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h2><p>查询处理及优化</p>
+<h3 id="查询处理"><a href="#查询处理" class="headerlink" title="查询处理"></a>查询处理</h3><p>SQL语言 –&gt; 解析和翻译 –&gt; 关系代数表达式 –&gt; 优化器 –&gt; 查询执行计划 –&gt; 执行引擎 –&gt; 查询输出</p>
+<ul>
+<li><p>原语操作：带有标注信息的关系代数运算</p>
+</li>
+<li><p>查询执行计划：一系列原语操作序列</p>
+</li>
+<li><p>优化：</p>
+</li>
+</ul>
+<p>选择、投影运算要尽量早做<br>连接运算尽量后做</p>
+
                 
             </div>
             <hr/>
@@ -994,7 +1241,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.7k</span>
+                        class="white-color">13.4k</span>
             
             
             

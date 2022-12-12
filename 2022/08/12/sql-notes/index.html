@@ -406,14 +406,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -561,6 +561,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>student<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> s
 <span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> <span class="token identifier"><span class="token punctuation">`</span>result<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> r
 <span class="token keyword">ON</span> s<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="left-join"><a href="#left-join" class="headerlink" title="left join"></a>left join</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--LEFT JOIN 即使右表中没有匹配，也从左表返回所有的行</span>
 <span class="token comment">--例：查询未参加考试的同学</span>
 <span class="token keyword">SELECT</span> s<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 学号<span class="token punctuation">,</span><span class="token identifier"><span class="token punctuation">`</span>studentname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 姓名<span class="token punctuation">,</span> <span class="token identifier"><span class="token punctuation">`</span>subjectno<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程号<span class="token punctuation">,</span> <span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程成绩
@@ -568,6 +569,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> <span class="token identifier"><span class="token punctuation">`</span>result<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> r
 <span class="token keyword">ON</span> s<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span>
 <span class="token keyword">WHERE</span> <span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span> <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="right-join"><a href="#right-join" class="headerlink" title="right join"></a>right join</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--RIGHT JOIN 即使左表中没有匹配，也从右表返回所有的行</span>
 <span class="token comment">--例：查询参加考试的学生的所有课程信息及成绩</span>
 <span class="token keyword">SELECT</span> stu<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 学号<span class="token punctuation">,</span>stu<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 姓名<span class="token punctuation">,</span> res<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>subjectno<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程号<span class="token punctuation">,</span>sub<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>subjectname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程名<span class="token punctuation">,</span> res<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程成绩
@@ -576,6 +578,11 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token keyword">ON</span> stu<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span>
 <span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> <span class="token identifier"><span class="token punctuation">`</span>subject<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> sub
 <span class="token keyword">ON</span> res<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>subjectno<span class="token punctuation">`</span></span> <span class="token operator">=</span> sub<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>subjectno<span class="token punctuation">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="natural-join-自然连接"><a href="#natural-join-自然连接" class="headerlink" title="natural join 自然连接"></a>natural join 自然连接</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 消除了重复属性</span>
+<span class="token keyword">select</span> sID <span class="token keyword">from</span>
+Student <span class="token keyword">natural</span> <span class="token keyword">join</span> <span class="token keyword">Apply</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
 <h3 id="自查询"><a href="#自查询" class="headerlink" title="自查询"></a>自查询</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> father<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>categoryid<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> <span class="token string">'父栏目id'</span><span class="token punctuation">,</span>father<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>categoryname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> <span class="token string">'父栏目名称'</span><span class="token punctuation">,</span> son<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>categoryid<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> <span class="token string">'子栏目id'</span><span class="token punctuation">,</span> son<span class="token punctuation">.</span><span class="token identifier"><span class="token punctuation">`</span>categoryname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> <span class="token string">'子栏目名称'</span>
 <span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>category<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> father<span class="token punctuation">,</span> <span class="token identifier"><span class="token punctuation">`</span>category<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> son
@@ -591,7 +598,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>subject<span class="token punctuation">`</span></span>
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token identifier"><span class="token punctuation">`</span>subjectno<span class="token punctuation">`</span></span> <span class="token keyword">ASC</span>
 <span class="token keyword">LIMIT</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">5</span> <span class="token comment">--从第一条记录开始，显示5条记录</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--在where里面可以嵌套select查询的结果</span>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--在where里面可以嵌套select查询的结果</span>
 <span class="token keyword">SELECT</span> <span class="token identifier"><span class="token punctuation">`</span>studentname<span class="token punctuation">`</span></span><span class="token punctuation">,</span><span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span>
 <span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>student<span class="token punctuation">`</span></span> s
 <span class="token keyword">WHERE</span> <span class="token identifier"><span class="token punctuation">`</span>studentno<span class="token punctuation">`</span></span> <span class="token operator">IN</span> <span class="token punctuation">(</span>
@@ -602,7 +609,21 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 		<span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>subject<span class="token punctuation">`</span></span>
 		<span class="token keyword">WHERE</span> <span class="token identifier"><span class="token punctuation">`</span>subjectname<span class="token punctuation">`</span></span> <span class="token operator">=</span> <span class="token string">'高等数学-1'</span> 
 	<span class="token punctuation">)</span> <span class="token operator">AND</span> <span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span> <span class="token operator">&gt;</span> <span class="token number">60</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span>
+
+
+<span class="token comment">-- exists 关键字</span>
+<span class="token keyword">select</span> cName<span class="token punctuation">,</span> state
+<span class="token keyword">from</span> College C1
+<span class="token keyword">where</span> <span class="token keyword">exists</span> <span class="token punctuation">(</span>
+  <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> College C2 
+  <span class="token keyword">where</span> C1<span class="token punctuation">.</span>state <span class="token operator">=</span> C2<span class="token punctuation">.</span>state 
+  <span class="token operator">and</span> C1<span class="token punctuation">.</span>cName <span class="token operator">&lt;</span> C2<span class="token punctuation">.</span>cName 
+<span class="token punctuation">)</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 <h3 id="分组及分组过滤"><a href="#分组及分组过滤" class="headerlink" title="分组及分组过滤"></a>分组及分组过滤</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token identifier"><span class="token punctuation">`</span>subjectname<span class="token punctuation">`</span></span> <span class="token keyword">AS</span> 课程名<span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">AS</span> 平均分<span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>studentresult<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">AS</span> 总分
 <span class="token keyword">FROM</span> <span class="token identifier"><span class="token punctuation">`</span>subject<span class="token punctuation">`</span></span> s
@@ -611,6 +632,23 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token identifier"><span class="token punctuation">`</span>subjectname<span class="token punctuation">`</span></span> <span class="token comment">--分组</span>
 <span class="token keyword">HAVING</span> 平均分 <span class="token operator">&gt;</span> <span class="token number">60</span> <span class="token operator">AND</span> 总分 <span class="token operator">&gt;</span> <span class="token number">100</span> <span class="token comment">--过滤</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><h4 id="并集-union"><a href="#并集-union" class="headerlink" title="并集 union"></a>并集 union</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- union 之后自动排序</span>
+<span class="token keyword">select</span> cName <span class="token keyword">as</span> name <span class="token keyword">from</span> College
+<span class="token keyword">union</span>
+<span class="token keyword">select</span> sName <span class="token keyword">as</span> name <span class="token keyword">from</span> Student
+
+<span class="token comment">-- union all 之后不排序</span>
+<span class="token keyword">select</span> cName <span class="token keyword">as</span> name <span class="token keyword">from</span> College
+<span class="token keyword">union</span> <span class="token keyword">all</span>
+<span class="token keyword">select</span> sName <span class="token keyword">as</span> name <span class="token keyword">from</span> Student<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="交集-intersect"><a href="#交集-intersect" class="headerlink" title="交集 intersect"></a>交集 intersect</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> cName <span class="token keyword">as</span> name <span class="token keyword">from</span> College
+<span class="token keyword">intersect</span>
+<span class="token keyword">select</span> sName <span class="token keyword">as</span> name <span class="token keyword">from</span> Student<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="差集-except"><a href="#差集-except" class="headerlink" title="差集 except"></a>差集 except</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> cName <span class="token keyword">as</span> name <span class="token keyword">from</span> College
+<span class="token keyword">except</span>
+<span class="token keyword">select</span> sName <span class="token keyword">as</span> name <span class="token keyword">from</span> Student<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="MySQL函数"><a href="#MySQL函数" class="headerlink" title="MySQL函数"></a>MySQL函数</h2><h3 id="常用函数-http-c-biancheng-net-mysql-function"><a href="#常用函数-http-c-biancheng-net-mysql-function" class="headerlink" title="常用函数 http://c.biancheng.net/mysql/function/"></a>常用函数 <a target="_blank" rel="noopener" href="http://c.biancheng.net/mysql/function/">http://c.biancheng.net/mysql/function/</a></h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 时间</span>
@@ -625,7 +663,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 <span class="token comment">-- 系统</span>
 <span class="token keyword">SELECT</span> <span class="token keyword">USER</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">SELECT</span> VERSION<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><h4 id="计数"><a href="#计数" class="headerlink" title="计数"></a>计数</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token comment">--包括了所有的列，相当于行数，在统计结果的时候， 不会忽略列值为NULL  </span>
+<h3 id="聚合函数-Aggregation"><a href="#聚合函数-Aggregation" class="headerlink" title="聚合函数 Aggregation"></a>聚合函数 Aggregation</h3><h4 id="计数-count"><a href="#计数-count" class="headerlink" title="计数 count"></a>计数 count</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token comment">--包括了所有的列，相当于行数，在统计结果的时候， 不会忽略列值为NULL  </span>
 <span class="token function">count</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--包括了忽略所有列，用1代表代码行，在统计结果的时候， 不会忽略列值为NULL  </span>
 <span class="token function">count</span><span class="token punctuation">(</span>列名<span class="token punctuation">)</span> <span class="token comment">--只包括列名那一列，在统计结果的时候，会忽略列值为空（这里的空不是只空字符串或者0，而是表示null）的计数， 即某个字段值为NULL时，不统计。</span>
 <span class="token comment">/*
@@ -635,7 +673,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
 如果有主键，则 select count（主键）的执行效率是最优的  
 如果表只有一个字段，则 select count（*）最优。
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<h4 id="max-min-avg-sum"><a href="#max-min-avg-sum" class="headerlink" title="max,min,avg,sum"></a>max,min,avg,sum</h4><p>同理</p>
 <h3 id="加密函数"><a href="#加密函数" class="headerlink" title="加密函数"></a>加密函数</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> MD5<span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -1063,7 +1101,7 @@ DELETE FROM 是清空所有记录，自增计数器被重置
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.7k</span>
+                        class="white-color">13.4k</span>
             
             
             
