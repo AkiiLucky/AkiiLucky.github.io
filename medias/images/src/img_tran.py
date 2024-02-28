@@ -49,3 +49,29 @@ for img in img_dir:
 img_dir = os.listdir(Path)
 for img in img_dir:
     print(img)
+
+
+import os
+
+# 设置目标文件夹路径
+folder_path = './'
+
+# 获取文件夹中所有.jpg文件
+jpg_files = [f for f in os.listdir(folder_path) if f.endswith('.jpg')]
+
+# 按文件名排序，这一步是可选的，根据需要决定是否需要
+jpg_files.sort()
+
+# 重命名文件
+for i, filename in enumerate(jpg_files):
+    # 构造原始文件的完整路径
+    original_path = os.path.join(folder_path, filename)
+    
+    # 构造新文件的完整路径
+    new_path = os.path.join(folder_path, f'{i}.jpg')
+    
+    # 重命名文件
+    os.rename(original_path, new_path)
+
+print("重命名完成。")
+
